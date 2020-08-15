@@ -4,8 +4,74 @@
     <home-swiper :banners="banners"/>
     <recommend-view :recommends="recommends"/>
     <feature-view/>
+    <tab-control class="tab-control" :titles="['流行','新款','经典']"/>
     <ul>
       <li>1</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>1</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>1</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
       <li>2</li>
       <li>2</li>
       <li>2</li>
@@ -22,17 +88,19 @@
 
 <script>
   import NavBar from "components/common/navbar/NavBar"
+  import TabControl from "components/content/tabControl/TabControl";
+
   import {getHomeMultidata} from "network/home";
-  /*import Swiper from "components/common/swiper/Swiper";
-  import SwiperItem from "components/common/swiper/SwiperItem";*/
-import homeSwiper from "./childComps/homeSwiper";
+
   import HomeSwiper from "./childComps/homeSwiper";
   import RecommendView from "./childComps/RecommendView";
-  import FeatureView from "./childComps/FeatureView";
+  import FeatureView from "./childComps/FeatureView"
+
 
   export default {
     name: "home",
     components: {
+      TabControl,
       HomeSwiper, NavBar,
       RecommendView,FeatureView
     },
@@ -67,4 +135,8 @@ import homeSwiper from "./childComps/homeSwiper";
   top: 0;
   z-index: 9;
 }
+  .tab-control{
+    position: sticky;
+    top: 44px;
+  }
 </style>
