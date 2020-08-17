@@ -4,85 +4,10 @@
     <home-swiper :banners="banners"/>
     <recommend-view :recommends="recommends"/>
     <feature-view/>
-    <tab-control class="tab-control" :titles="['流行','新款','精选']"/>
-    <goods-list :goods="goods['pop'].list"/>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-    </ul>
+    <tab-control class="tab-control" :titles="['流行','新款','精选']"
+                 @tabClick="tabClick"/>
+    <goods-list :goods="showGoods"/>
+
   </div>
 
 </template>
@@ -117,7 +42,13 @@
          'pop':{page:0,list:[] },
          'new':{page:0,list:[] },
          'sell':{page:0,list:[] },
-        }
+        },
+        currentType:'pop'
+      }
+    },
+    computed:{
+      showGoods(){
+        return this.goods[this.currentType].list
       }
     },
     created() {
@@ -130,6 +61,26 @@
      this.getHomeGoods('sell')
     },
     methods:{
+      /**
+       * 事件监听
+       */
+      tabClick(index){
+        switch (index) {
+        case 0:
+         this.currentType='pop'
+         break
+        case 1:
+         this.currentType='new'
+         break
+        case 2:
+         this.currentType='sell'
+         break
+}
+      },
+
+      /**
+       * 网络请求
+       */
       getHomeMultidata(){
         getHomeMultidata().then(res=>{
           console.log(res);
@@ -166,5 +117,6 @@
   .tab-control{
     position: sticky;
     top: 44px;
+    z-index: 9;
   }
 </style>
